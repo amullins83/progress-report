@@ -16,6 +16,7 @@ var app = module.exports = express();
 
 app.enable('trust_proxy');
 app.configure(function(){
+  app.set("view_engine", "jade");
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(express.cookieParser());
@@ -49,5 +50,9 @@ function calculateLogLevel(cmdLineArgs, appEnvSettings)
 // Routes
 
 app.get('/api/ping', function SamplePing(req, res){
- res.json(200, {'message': 'Hello, world!'});
-})
+ res.json(200, {'message': 'This came from JSON, believe it or not.'});
+});
+
+app.get('/views/main', function(req, res) {
+ res.render('../app/views/main.jade');
+});

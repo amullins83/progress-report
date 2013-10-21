@@ -1,42 +1,53 @@
 // Karma configuration
+// Generated on Sat May 11 2013 16:07:11 GMT-0500 (Central Daylight Time)
+
 
 // base path, that will be used to resolve files and exclude
 basePath = '';
 
+
 // list of files / patterns to load in the browser
 files = [
-  JASMINE,
-  JASMINE_ADAPTER,
-  'app/components/angular/angular.js',
-  'app/components/angular-mocks/angular-mocks.js',
-  'app/scripts/*.js',
-  'app/scripts/**/*.js',
-  'test/mock/**/*.js',
-  'test/spec/**/*.js'
+  MOCHA,
+  MOCHA_ADAPTER,
+  REQUIRE,
+  REQUIRE_ADAPTER,
+  './app/scripts/main.js',
+  {pattern: './test/**/*.js', included: false}
 ];
 
+
 // list of files to exclude
-exclude = [];
+exclude = [
+  
+];
+
 
 // test results reporter to use
-// possible values: dots || progress || growl
+// possible values: 'dots', 'progress', 'junit'
 reporters = ['progress'];
 
+
 // web server port
-port = 8080;
+port = 9876;
+
 
 // cli runner port
-runnerPort = 9100;
+runnerPort = 9101;
+
 
 // enable / disable colors in the output (reporters and logs)
 colors = true;
+
 
 // level of logging
 // possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
 logLevel = LOG_INFO;
 
+
 // enable / disable watching file and executing tests whenever any file changes
-autoWatch = false;
+autoWatch = true;
+
 
 // Start these browsers, currently available:
 // - Chrome
@@ -48,8 +59,10 @@ autoWatch = false;
 // - IE (only Windows)
 browsers = ['Chrome'];
 
+
 // If browser does not capture in given timeout [ms], kill it
-captureTimeout = 5000;
+captureTimeout = 60000;
+
 
 // Continuous Integration mode
 // if true, it capture browsers, run tests and exit

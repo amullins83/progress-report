@@ -41,14 +41,30 @@ define(['angular', 'jquery', 'spin'], function (angular, $, Spinner) {
     };
   })(jQuery);
 
-  var angApp = angular.module('csgApp', [], function($routeProvider, $locationProvider){
+  angular.module("csgApp.services", [])
+    .value("copyYear", 2013).value("copyHolder", "Austin Mullins");
+
+
+  angular.module("csgApp.filters", []).filter("interpolate", [
+    "copyYear", "copyHolder", function(copyYear, copyHolder) {
+      return function(text) {
+        return String(text).replace(/#COPY_YEAR/mg, copyYear).replace(/#COPY_HOLDER/mg, copyHolder);
+      };
+  }]);
+
+
+
+  var angApp = angular.module('csgApp', ["csgApp.services", "csgApp.filters"])
+  .config([
+    "$routeProvider", "$locationProvider", function($routeProvider, $locationProvider){
     $routeProvider.when('/', {
-      templateUrl: '/views/main.html',
+      templateUrl: '/views/main',
       controller: MainCntl
     });
 
     $routeProvider.otherwise({redirectTo: '/'});
-  });
+  }]);
+
 
 
   var MainCntl = function($scope, $http){
