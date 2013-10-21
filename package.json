@@ -1,5 +1,5 @@
 {
-  "name": "mktg-site",
+  "name": "progress-report",
   "version": "0.0.0",
   "dependencies": {},
   "devDependencies": {
@@ -29,6 +29,9 @@
     "grunt-contrib-requirejs": "~0.4.0"
   },
   "engines": {
-    "node": ">=0.8.0"
+    "node": ">=0.10.21"
+  },
+  "scripts": {
+    "start": "grunt connect"
   }
 }
